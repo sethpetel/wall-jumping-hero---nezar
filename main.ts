@@ -1,3 +1,15 @@
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (hero.isHittingTile(CollisionDirection.Bottom)) {
+        hero.vy = -170
+    }
+})
+controller.left.onEvent(ControllerButtonEvent.Pressed, function() {
+    hero.setImage(leftFacingImg)
+})
+controller.right.onEvent(ControllerButtonEvent.Pressed, function() {
+    hero.setImage(rightFacingImg)
+})
+let hero: Sprite = null
 let rightSwordOutImg = img`
     . . . . . . . f f . . . . . . . 
     . . . . f f f f 2 f f . . . . . 
@@ -71,7 +83,7 @@ let leftFacingImg = img`
     . . . . f f f . . . f f . . . . 
     `
 tiles.setTilemap(tilemap`level`)
-let hero = sprites.create(rightFacingImg, SpriteKind.Player)
+hero = sprites.create(rightFacingImg, SpriteKind.Player)
 tiles.placeOnTile(hero, tiles.getTileLocation(4, 30))
 scene.cameraFollowSprite(hero)
 hero.ay = 350
